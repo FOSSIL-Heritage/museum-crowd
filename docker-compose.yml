@@ -25,7 +25,7 @@ services:
   database:
     container_name: cloud-database
     image: mongo:5.0
-    command: mongod --quiet --logpath /dev/null 
+    command: mongod --quiet --logpath /dev/null
     expose:
       - 27017
     ports:
@@ -45,13 +45,13 @@ services:
       - ./warehouse/src:/usr/src/app/src
     ports:
       - 3000:3000
-    environment: 
+    environment:
       - PORT=3000
       - BROKER_URI=kafka
       - TOPIC=IoTDataTopic
     depends_on:
-        - kafka
-        - database
+      - kafka
+      - database
   analytics:
     container_name: cloud-analytics
     build:
@@ -61,7 +61,7 @@ services:
       - ./analytics/src:/usr/src/app/src
     ports:
       - 3001:3001
-    environment: 
+    environment:
       - PORT=3001
       - WAREHOUSE_SERVICE_URI=http://warehouse:3000
   monitoring:
@@ -73,7 +73,7 @@ services:
       - ./monitoring/src:/usr/src/app/src
     ports:
       - 3002:3002
-    environment: 
+    environment:
       - PORT=3002
       - WAREHOUSE_SERVICE_URI=http://warehouse:3000
 
@@ -84,9 +84,7 @@ volumes:
     driver: local
   mongodb_data:
 
-networks: 
+networks:
   default:
-      external: true 
-      name: vasari-network
-  
-
+    external: true
+    name: vasari-network
