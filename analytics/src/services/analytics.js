@@ -1,10 +1,9 @@
-const axios = require("axios");
-
-const WAREHOUSE_SERVICE_URI = process.env.WAREHOUSE_SERVICE_URI;
+const warehouseApi = require('../api/warehouseApi')
 
 module.exports.getPredictedVisitors = async () => {
+
   try {
-    const data = await axios.get(WAREHOUSE_SERVICE_URI);
+    const data = await warehouseApi.getCameras()
     return calculatePredictedVisitors(data)
   } catch (e) {
     throw e;
@@ -13,7 +12,7 @@ module.exports.getPredictedVisitors = async () => {
 
 module.exports.getHistoryVisitors = async () => {
   try {
-    const data = await axios.get(WAREHOUSE_SERVICE_URI);
+    const data = await warehouseApi.getPcs()
     return calculateHistoryVisitors(data)
   } catch (e) {
 
