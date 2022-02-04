@@ -14,6 +14,7 @@
     "express": "^4.17.2",
     "kafka-node": "^5.0.0",
     "mongodb": "^4.3.1",
-    "nodemon": "2.0.12"
+    "nodemon": "2.0.12",
+    "npmlog":"^6.0.0"
   }
 }

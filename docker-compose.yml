@@ -47,8 +47,6 @@ services:
       - 3000:3000
     environment:
       - PORT=3000
-      - BROKER_URI=kafka
-      - TOPIC=IoTDataTopic
     depends_on:
       - kafka
       - database
