@@ -9,8 +9,12 @@ const CONSUMER_TOPIC = "CameraData";
 const processMessage = async (msg) => {
   log.info("CameraData read", msg);
 
-  const cameraId = await cameraService.save(msg.pc);
-  log.info("Camera saved as: ", cameraId);
+  try {
+    const cameraId = await cameraService.save(msg.pc);
+    log.info("Camera saved as: ", cameraId);
+  } catch (e) {
+    log.error("PCData", "PC not saved!");
+  }
 };
 
 exports.subscribe = async () => {
