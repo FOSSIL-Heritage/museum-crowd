@@ -1,0 +1,19 @@
+{
+  "name": "processing-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon -L ./src/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "avsc": "^5.7.3",
+    "dotenv": "^15.0.0",
+    "express": "^4.17.2",
+    "kafka-node": "^5.0.0",
+    "mongodb": "^4.3.1",
+    "nodemon": "2.0.12"
+  }
+}
