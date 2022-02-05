@@ -21,7 +21,8 @@ services:
       - ALLOW_PLAINTEXT_LISTENER=yes
       - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://35.193.220.65:9092
     depends_on:
-      - zookeeper
+      - zookeeper:
+        condition: service_healthy
   database:
     container_name: cloud-database
     image: mongo:5.0
