@@ -48,8 +48,6 @@ services:
       - 3000:3000
     environment:
       - PORT=3000
-      - BROKER_URI=kafka
-      - TOPIC=PCData
     depends_on:
       - kafka
       - database
