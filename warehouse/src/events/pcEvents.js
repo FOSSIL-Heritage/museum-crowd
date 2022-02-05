@@ -10,10 +10,10 @@ const processMessage = async (msg) => {
   log.info("PCData read", msg);
 
   try {
-    const pcId = await pcService.save(msg.pc);
+    const pcId = await pcService.save(msg);
     log.info("PC saved as: " + pcId);
   } catch (e) {
-    log.error("PCData", "PC not saved!");
+    log.error("PCData", "PC not saved!",e);
   }
 };
 

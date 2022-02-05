@@ -10,10 +10,10 @@ const processMessage = async (msg) => {
   log.info("CameraData read", msg);
 
   try {
-    const cameraId = await cameraService.save(msg.pc);
+    const cameraId = await cameraService.save(msg);
     log.info("Camera saved as: ", cameraId);
   } catch (e) {
-    log.error("PCData", "PC not saved!");
+    log.error("CameraData", "Camera not saved!",e);
   }
 };
 
