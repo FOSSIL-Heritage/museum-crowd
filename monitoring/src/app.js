@@ -54,5 +54,5 @@ server.listen(port, () => {
 
   //Register
   const serviceName = process.env.SERVICE_NAME || "crowd-monitoring";
-  //eureka.registerWithEureka(serviceName, port);
+  eureka.registerWithEureka(serviceName, port);
 });
