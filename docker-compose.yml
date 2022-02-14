@@ -48,9 +48,12 @@ services:
       - 3000:3000
     environment:
       - PORT=3000
+      - SERVICE_REGISTRY_NAME=registry
+      - SERVICE_NAME=warehouse
     depends_on:
       - kafka
       - database
+
   analytics:
     container_name: cloud-analytics
     build:
@@ -63,6 +66,9 @@ services:
     environment:
       - PORT=3001
       - WAREHOUSE_SERVICE_URI=http://warehouse:3000
+      - SERVICE_REGISTRY_NAME=registry
+      - SERVICE_NAME=analytics
+
   monitoring:
     container_name: cloud-monitoring
     build:
@@ -75,6 +81,8 @@ services:
     environment:
       - PORT=3002
       - WAREHOUSE_SERVICE_URI=http://warehouse:3000
+      - SERVICE_REGISTRY_NAME=registry
+      - SERVICE_NAME=monitoring
 
 volumes:
   zookeeper_data:

@@ -4,6 +4,7 @@ const mongoClient = require("./repository/database");
 const controller = require("./controller");
 const PCEvents = require("./events/pcEvents");
 const CameraEvents = require("./events/cameraEvents");
+const eureka = require("./eureka");
 
 //Express
 const app = express();
@@ -13,7 +14,6 @@ app.use(express.json());
 app.get("/", controller.welcome);
 app.get("/cameras", controller.getCameras);
 app.get("/pcs", controller.getPcs);
-
 
 // perform a database connection when the server starts
 mongoClient.connectToServer(function (err) {
@@ -25,6 +25,11 @@ mongoClient.connectToServer(function (err) {
   // start the Express server
   app.listen(port, async () => {
     console.log(`Server is running on port: ${port}`);
+
+    //Register
+    const serviceName = process.env.SERVICE_NAME || "warehouse";
+    eureka.registerWithEureka(serviceName, port);
+
     await PCEvents.subscribe();
     await CameraEvents.subscribe();
   });
