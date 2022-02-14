@@ -10,7 +10,7 @@ services:
     environment:
       - ALLOW_ANONYMOUS_LOGIN=yes
   kafka:
-    container_name: cloud-kafka
+    container_name: crowd-kafka
     restart: always
     image: 'bitnami/kafka:2'
     ports:
@@ -24,7 +24,7 @@ services:
     depends_on:
       - zookeeper
   database:
-    container_name: cloud-database
+    container_name: crowd-database
     image: mongo:5.0
     command: mongod --quiet --logpath /dev/null
     expose:
@@ -38,7 +38,7 @@ services:
     volumes:
       - mongodb_data:/data/db
   warehouse:
-    container_name: cloud-warehouse
+    container_name: crowd-warehouse
     build:
       context: ./warehouse
       dockerfile: Dockerfile
@@ -55,7 +55,7 @@ services:
       - database
 
   analytics:
-    container_name: cloud-analytics
+    container_name: crowd-analytics
     build:
       context: ./analytics
       dockerfile: Dockerfile
@@ -70,7 +70,7 @@ services:
       - SERVICE_NAME=analytics
 
   monitoring:
-    container_name: cloud-monitoring
+    container_name: crowd-monitoring
     build:
       context: ./monitoring
       dockerfile: Dockerfile
