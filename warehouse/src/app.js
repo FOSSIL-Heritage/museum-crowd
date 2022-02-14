@@ -27,7 +27,7 @@ mongoClient.connectToServer(function (err) {
     console.log(`Server is running on port: ${port}`);
 
     //Register
-    const serviceName = process.env.SERVICE_NAME || "warehouse";
+    const serviceName = process.env.SERVICE_NAME || "crowd-warehouse";
     eureka.registerWithEureka(serviceName, port);
 
     await PCEvents.subscribe();

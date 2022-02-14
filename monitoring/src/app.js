@@ -26,6 +26,6 @@ app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);
 
   //Register
-  const serviceName = process.env.SERVICE_NAME || "monitoring";
+  const serviceName = process.env.SERVICE_NAME || "crowd-monitoring";
   eureka.registerWithEureka(serviceName, port);
 });
