@@ -49,7 +49,7 @@ services:
     environment:
       - PORT=3000
       - SERVICE_REGISTRY_NAME=registry
-      - SERVICE_NAME=warehouse
+      - SERVICE_NAME=crowd-warehouse
     depends_on:
       - kafka
       - database
@@ -67,7 +67,7 @@ services:
       - PORT=3001
       - WAREHOUSE_SERVICE_URI=http://warehouse:3000
       - SERVICE_REGISTRY_NAME=registry
-      - SERVICE_NAME=analytics
+      - SERVICE_NAME=crowd-analytics
 
   monitoring:
     container_name: crowd-monitoring
@@ -82,7 +82,7 @@ services:
       - PORT=3002
       - WAREHOUSE_SERVICE_URI=http://warehouse:3000
       - SERVICE_REGISTRY_NAME=registry
-      - SERVICE_NAME=monitoring
+      - SERVICE_NAME=crowd-monitoring
 
 volumes:
   zookeeper_data:
