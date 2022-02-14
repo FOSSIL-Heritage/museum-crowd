@@ -11,7 +11,7 @@ exports.registerWithEureka = function(appName, PORT) {
       app: appName,
       hostName: hostName,
       ipAddr: ipAddr,
-      statusPageUrl: `http://localhost:${PORT}/`,
+      statusPageUrl: `http://${hostName}:${PORT}/`,
       port: {
         '$': PORT,
         '@enabled': 'true',
