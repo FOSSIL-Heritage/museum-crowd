@@ -20,7 +20,7 @@ services:
     environment:
       - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
       - ALLOW_PLAINTEXT_LISTENER=yes
-      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://35.193.220.65:9092
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://${REMOTE_HOST}:9092
     depends_on:
       - zookeeper
   database:
@@ -66,7 +66,7 @@ services:
       - 3001:3001
     environment:
       - PORT=3001
-      - WAREHOUSE_SERVICE_URI=http://warehouse:3000
+      - WAREHOUSE_SERVICE_URI=http://${REMOTE_HOST}:8082/api/crowd-warehouse
       - SERVICE_REGISTRY_NAME=registry
       - SERVICE_NAME=crowd-analytics
       - HOSTNAME=${LOCALHOST}
@@ -82,7 +82,7 @@ services:
       - 3002:3002
     environment:
       - PORT=3002
-      - WAREHOUSE_SERVICE_URI=http://warehouse:3000
+      - WAREHOUSE_SERVICE_URI=http://${REMOTE_HOST}:8082/api/crowd-warehouse
       - SERVICE_REGISTRY_NAME=registry
       - SERVICE_NAME=crowd-monitoring
       - HOSTNAME=${LOCALHOST}
